@@ -5,6 +5,7 @@ export default class Events {
         this.push(data);
       } break;
       default: 
+        console.log(`Cannot handle event ${event}.`);
         return '';
     }
   }
