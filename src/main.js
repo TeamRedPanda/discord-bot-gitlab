@@ -19,9 +19,10 @@ app.post('/:guildId', handleRequest);
 function handleRequest(req, res) {
   // @TODO Verify that this request came from GitHub
   const event = req.get("X-Gitlab-Event");
+  console.log('Event received ' + event);
   if (event) {
     const message = Events[event](req.body);
-    const repo = req.body.repository.full_name.toLowerCase();
+    const repo = req.body.repository.path_with_namespace.toLowerCase();
     sendMessages(repo, message, req.params.guildId);
     res.sendStatus(200);
   } else {
@@ -62,13 +63,13 @@ function sendMessages(repo, message, guildId) {
 /**
  * Check to see if any message read by this bot is relevant.
  * - Do nothing if the message is from the bot itself.
- * - Check if the message is prefaced with '!dbg'.
+ * - Check if the message is prefaced with '!gitlab'.
  * - If the command is prefaced, check if the command exists.
  * - Then perform the action sepcified.
  */
 bot.on('message', (message) => {
   if (message.author.id === bot.user.id) return;
-  if (message.content.substring(0, 4) !== '!dbg') return;
+  if (message.content.substring(0, 7) !== '!gitlab') return;
 
   const commandObject = parseMessage(message);
   if (commandObject) {
