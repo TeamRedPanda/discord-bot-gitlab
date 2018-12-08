@@ -20,7 +20,7 @@ function handleRequest(req, res) {
   // @TODO Verify that this request came from GitHub
   const event = req.get("X-Gitlab-Event");
   console.log('Event received ' + event);
-  
+  console.log(`For repository ${req.body.project.path_with_namespace}`)
   if (event) {
     const message = Events.Handle(event, req.body);
     const repo = req.body.project.path_with_namespace.toLowerCase();
