@@ -20,9 +20,10 @@ function handleRequest(req, res) {
   // @TODO Verify that this request came from GitHub
   const event = req.get("X-Gitlab-Event");
   console.log('Event received ' + event);
+  
   if (event) {
     const message = Events.Handle(event, req.body);
-    const repo = req.body.repository.path_with_namespace.toLowerCase();
+    const repo = req.body.project.path_with_namespace.toLowerCase();
     sendMessages(repo, message, req.params.guildId);
     res.sendStatus(200);
   } else {
