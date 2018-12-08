@@ -7,7 +7,8 @@ export default class Commands {
    * Check if the repo is public or private.
    */
   static add(channel, repo, _private) {
-
+    return Actions.add(repo, channel.id);
+    /*
     if (_private === '--private') {
       // If the repo is private it will always return 404
       // So lets add it in good faith anyway.
@@ -31,7 +32,7 @@ export default class Commands {
           channel.sendMessage('Repository not found.');
         }
       });
-    }
+    }*/
   }
 
   static remove(channel, repo, _private) {
