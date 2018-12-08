@@ -18,7 +18,7 @@ app.post('/:guildId', handleRequest);
 
 function handleRequest(req, res) {
   // @TODO Verify that this request came from GitHub
-  const event = req.get("X-GitHub-Event");
+  const event = req.get("X-Gitlab-Event");
   if (event) {
     const message = Events[event](req.body);
     const repo = req.body.repository.full_name.toLowerCase();
