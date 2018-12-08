@@ -21,7 +21,7 @@ function handleRequest(req, res) {
   const event = req.get("X-Gitlab-Event");
   console.log('Event received ' + event);
   if (event) {
-    const message = Events[event](req.body);
+    const message = Events.Handle(event, req.body);
     const repo = req.body.repository.path_with_namespace.toLowerCase();
     sendMessages(repo, message, req.params.guildId);
     res.sendStatus(200);

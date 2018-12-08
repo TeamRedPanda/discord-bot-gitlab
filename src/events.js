@@ -1,4 +1,14 @@
 export default class Events {
+  static Handle(event, data) {
+    switch(event) {
+      case 'Push Hook': {
+        this.push(data);
+      } break;
+      default: 
+        return '';
+    }
+  }
+
   static commit_comment(data) {
     let message = "";
     const repo = data.repository.full_name;
