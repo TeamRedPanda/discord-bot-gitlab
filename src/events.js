@@ -2,7 +2,7 @@ export default class Events {
   static Handle(event, data) {
     switch(event) {
       case 'Push Hook': {
-        this.push(data);
+        return this.push(data);
       } break;
       default: 
         console.log(`Cannot handle event ${event}.`);
