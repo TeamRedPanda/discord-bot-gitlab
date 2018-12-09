@@ -144,7 +144,7 @@ export default class Events {
       for (let commit of commits) {
         const sha = commit.id.substring(0, 7);
         const url = commit.url;
-        message += `\n${commit.message} \n- ${commit.author.name}`;
+        message += `\n${commit.message} - ${commit.author.name}`;
         message += `\n${url}`;
       }
     }
