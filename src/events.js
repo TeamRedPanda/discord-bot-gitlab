@@ -133,7 +133,7 @@ export default class Events {
       const url = commit.url;
       message += `[**${repo}:${branch}**] 1 new commit by ${name}`;
       message += `\n${commitMessage}`;
-      message += `\n${url}`;
+      message += `\n<${url}>`;
     } else {
       const commits = data.commits;
 
@@ -145,7 +145,7 @@ export default class Events {
         const sha = commit.id.substring(0, 7);
         const url = commit.url;
         message += `\n${commit.message} - ${commit.author.name}`;
-        message += `\n${url}`;
+        message += `\n<${url}>`;
       }
     }
     return message;
