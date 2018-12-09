@@ -146,6 +146,8 @@ export default class Events {
         const url = commit.url;
         message += `\n${commit.message} - ${commit.author.name}`;
         message += `\n<${url}>`;
+        if (commit != commits[commits.length])
+          message += `\n`;
       }
     }
     return message;
